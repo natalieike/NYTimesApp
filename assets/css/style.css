@@ -1,0 +1,14 @@
+p {
+	font-family: ‘Noto Sans’, sans-serif;
+	font-size: 50px;
+	text-align: center;
+}
+
+.navbar-header {
+	text-align: center;
+	width: 100%;
+}
+	
+h1 {
+	font-family: ‘Merriweather’, serif;
+}
