@@ -7,7 +7,8 @@ $("#search").on("click", function() {
   var beginDate = $("#begin-date").val() + "0101";
   var endDate = $("#end-date").val() + "0727";
   var apiKey = "7032c5448f4445509a3f0dd6549fec88";
-  var sortOption = $("#sortOptions").attr("value");
+  //var sortOption = $("#sortOptions").attr("value");
+  var sortOption = "asc"
 
   var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTerm + "&api-key=" + apiKey + "&fq=" + numRecords + "&begin_date=" + beginDate + "&end_date=" + endDate + "&sort=" + sortOption;
   console.log(queryURL);
@@ -24,12 +25,21 @@ $("#search").on("click", function() {
       // newDiv.append("<p>" + response.response.docs[i].byline.original + "</p>");
       newDiv.append("<p>" + response.response.docs[i].section_name + "</p>");
       newDiv.append("<p>" + response.response.docs[i].pub_date + "</p>");
-      newDiv.append("<p>" + response.response.docs[i].web_url + "</p>");
-      newDiv.append("<p>" + response.response.docs[i].snippet + "</p>");
+      newDiv.append("<a href='" + response.response.docs[i].web_url + "''>" + response.response.docs[i].web_url + "</a>");
+      newDiv.append("<p>" + response.response.docs[i].snippet + "</p><hr>");
       $("#article-area").append(newDiv);
     }
   });
-})
+});
+
+$("#reset").on("click", function() {
+  $("#searchTerm").val("");
+  $("#num-records").val("");
+  $("#begin-date").val("");
+  $("#end-date").val("");
+  $("#article-area").empty();
+});
+
 
 
 });
